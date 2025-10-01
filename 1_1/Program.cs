@@ -12,34 +12,17 @@ namespace _1_1
         {
             for(; ; )
             {
-                Console.WriteLine("Введи 1-е число");
                 try
                 {
-                    double a = double.Parse(Console.ReadLine());
-                    Console.WriteLine("Введи 2-е число");
-                    double b = double.Parse(Console.ReadLine());
-                    Console.WriteLine("Введи операцию(+,-,/,*)");
-                    char operation = char.Parse(Console.ReadLine());
-                    switch (operation)
-                    {
-                        case '+':Console.WriteLine($"Результат{a}+{b}={a + b}");
-                            break;
-                        case '-':Console.WriteLine($"Результат{a}-{b}={a - b}");
-                            break;
-                        case '*':Console.WriteLine($"Результат{a}*{b}={a * b}");
-                            break;
-                        case '/':Console.WriteLine($"Результат{a}/{b}={a / b}");
-                            break;
-                        default: throw new Exception();
-                    }
-                }
-                catch (DivideByZeroException)
+                    ConsoleCalculator consoleCalculator = new ConsoleCalculator();
+                    consoleCalculator.Set_a();
+                    consoleCalculator.SetOperation();
+                    consoleCalculator.Set_b();
+                    consoleCalculator.Calculate();
+                }                
+                catch(Exception ex)
                 {
-                    Console.WriteLine("Делить на ноль нельзя!!");
-                }
-                catch
-                {
-                    Console.WriteLine("Ошибка ввода данных!");
+                    Console.WriteLine(ex.Message);
                 }
 
             }
