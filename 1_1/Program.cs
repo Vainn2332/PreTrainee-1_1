@@ -10,21 +10,13 @@ namespace _1_1
     {    
         static void Main(string[] args)
         {
-            for(; ; )
-            {
-                try
-                {
-                    ConsoleCalculator consoleCalculator = new ConsoleCalculator();
-                    consoleCalculator.Set_a();
-                    consoleCalculator.SetOperation();
-                    consoleCalculator.Set_b();
-                    consoleCalculator.Calculate();
-                }                
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-
+            while(true)
+            {               
+                ConsoleCalculator consoleCalculator = new ConsoleCalculator();
+                consoleCalculator.Set_a();
+                consoleCalculator.SetOperation();
+                consoleCalculator.Set_b();
+                consoleCalculator.Calculate();
             }
         }
     }

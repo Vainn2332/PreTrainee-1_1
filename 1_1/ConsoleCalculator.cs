@@ -11,7 +11,7 @@ namespace _1_1
         private double a;
         private double b;
         private char operation;
-        public double Get_a() => a;
+        public double A { get => a; }
         public void Set_a()
         {
             Console.WriteLine("Введи 1-е число");
@@ -22,10 +22,10 @@ namespace _1_1
             }
             catch
             {
-                throw new Exception("Ошибка ввода первого числа!");
+                throw new ArgumentException("Ошибка ввода первого числа!");
             }
         }
-        public double Get_b() => b;
+        public double B { get => b;} 
         public void Set_b()
         {
             Console.WriteLine("Введи 2-е число");
@@ -36,7 +36,7 @@ namespace _1_1
             }
             catch
             {
-                throw new Exception("Ошибка ввода второго числа!");
+                throw new ArgumentException("Ошибка ввода второго числа!");
             }
         }
         public void SetOperation()
@@ -47,11 +47,11 @@ namespace _1_1
                 char operation = char.Parse(Console.ReadLine());
                 this.operation = operation;
                 if (!new char[] { '+','-','*','/'}.Contains(operation))
-                    throw new Exception("Неверно введена операция!");
+                    throw new ArgumentException("Неверно введена операция!");
             }
             catch
             {
-                throw new Exception("Неверно введена операция!");
+                throw new ArgumentException("Неверно введена операция!");
             }       
         }
         public void Calculate()
@@ -70,7 +70,7 @@ namespace _1_1
                 case '/':
                     {
                         if (b == 0)
-                            throw new Exception("На ноль делить нальзя!");
+                            throw new DivideByZeroException("На ноль делить нальзя!");
                         Console.WriteLine($"Результат {a}/{b}={a / b}");
                         break;
                     }
