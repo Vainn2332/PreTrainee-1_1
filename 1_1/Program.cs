@@ -9,24 +9,22 @@ namespace _1_1
     internal class Program
     {    
         static void Main(string[] args)
-        {
-            try
-            {
-                while(true)
-                {               
-                    ConsoleCalculator consoleCalculator = new ConsoleCalculator();
+        {           
+            while(true)
+            {               
+                ConsoleCalculator consoleCalculator = new ConsoleCalculator();
+                try
+                {
                     consoleCalculator.SetA();
                     consoleCalculator.SetOperation();
                     consoleCalculator.SetB();
                     consoleCalculator.Calculate();
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-           
         }
     }
 }
