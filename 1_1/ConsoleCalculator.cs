@@ -8,70 +8,50 @@ namespace _1_1
 {
     internal class ConsoleCalculator
     {
-        private double a;
-        private double b;
-        private char operation;
-        public double A { get => a; }
-        public void Set_a()
+        private double _a;
+        private double _b;
+        private char _operation;
+        public double A { get => _a; }
+        public void SetA()
         {
             Console.WriteLine("Введи 1-е число");
-            try
-            {
-                double a = double.Parse(Console.ReadLine());
-                this.a = a;
-            }
-            catch
-            {
-                throw new ArgumentException("Ошибка ввода первого числа!");
-            }
+            if(!double.TryParse(Console.ReadLine(), out _a))
+                throw new ArgumentException("Ошибка ввода первого числа!");            
         }
-        public double B { get => b;} 
-        public void Set_b()
+        public double B { get => _b;} 
+        public void SetB()
         {
             Console.WriteLine("Введи 2-е число");
-            try
-            {
-                double b = double.Parse(Console.ReadLine());
-                this.b = b;
-            }
-            catch
-            {
+            if (!double.TryParse(Console.ReadLine(), out _b))
                 throw new ArgumentException("Ошибка ввода второго числа!");
-            }
+            
         }
         public void SetOperation()
         {
             Console.WriteLine("Введи операцию(+,-,/,*)");
-            try
-            {
-                char operation = char.Parse(Console.ReadLine());
-                this.operation = operation;
-                if (!new char[] { '+','-','*','/'}.Contains(operation))
-                    throw new ArgumentException("Неверно введена операция!");
-            }
-            catch
-            {
+            if (!char.TryParse(Console.ReadLine(), out _operation))
                 throw new ArgumentException("Неверно введена операция!");
-            }       
+            if (!new char[] { '+','-','*','/'}.Contains(_operation))
+                    throw new ArgumentException("Неверно введена операция!");             
         }
         public void Calculate()
         {
-            switch (operation)
+            switch (_operation)
             {
                 case '+':
-                    Console.WriteLine($"Результат {a}+{b}={a + b}");
+                    Console.WriteLine($"Результат {_a}+{_b}={_a + _b}");
                     break;
                 case '-':
-                    Console.WriteLine($"Результат {a}-{b}={a - b}");
+                    Console.WriteLine($"Результат {_a}-{_b}={_a - _b}");
                     break;
                 case '*':
-                    Console.WriteLine($"Результат {a}*{b}={a * b}");
+                    Console.WriteLine($"Результат {_a}*{_b}={_a * _b}");
                     break;
                 case '/':
                     {
-                        if (b == 0)
+                        if (_b == 0)
                             throw new DivideByZeroException("На ноль делить нальзя!");
-                        Console.WriteLine($"Результат {a}/{b}={a / b}");
+                        Console.WriteLine($"Результат {_a}/{_b}={_a / _b}");
                         break;
                     }
                     
